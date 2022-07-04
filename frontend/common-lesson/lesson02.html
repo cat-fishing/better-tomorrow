@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>数据代理</title>
+        <script type="text/javascript" src="js/vue.js"></script>
+    </head>
+    <script>
+      //向对象中添加新元素，并且在获取新元素时候可以拿到其最新值
+      let number = 22
+      let person = {
+        name:"daming"
+      }
+      Object.defineProperty(person,"age",{
+        // value:35,
+        // enumerable:true, //可遍历
+        // writable:true,   //可修改
+        // configurable:true //可删除
+        get(){
+          //person每次获取值的时候可以拿到最新值
+          return number
+        },
+
+        set(value){
+          //person更新age时候number同时更新
+          number = value
+        }
+      })
+    </script>
+</html>
