@@ -4,11 +4,46 @@
         <meta charset="UTF-8">
         <title>事件代理</title>
         <script type="text/javascript" src="js/vue.js"></script>
+
+        <style>
+            *{
+                margin-top: 20px;
+            }
+            .box1{
+                background-color: aqua;
+            }
+            .box2{
+                background-color: orangered;
+            }
+        </style>
     </head>
     <body>
         <div id="root">
             <!--可简写为@click-->
-            <button v-on:click="showInfo">点我你试试</button>        
+            <button v-on:click="showInfo">点我你试试</button> 
+            <!--事件修饰 v-on:click.prevent增加修饰符之后不会触发默认跳转链接事件-->
+            <a href="https://www.baidu.com" v-on:click.prevent="showInfo">点我跳转</a>
+            <!--v-on:click.stop阻止事件冒泡-->
+            <div class="demo1" v-on:click="showInfo">
+                <button v-on:click.stop="showInfo">再点我你试试</button> 
+            </div>
+            <!--事件只被触发一次-->
+            <button v-on:click.once="showInfo">单次点击测试</button>
+            <!--事件捕获模式，默认事件捕获是外-内，冒泡是内-外
+                v-on:click.capture配置使得外层事件在捕获阶段即触发
+            -->
+            <div class="box1" v-on:click.capture="showMsg('外层')">
+                外层
+                <div class="box2" v-on:click="showMsg('内层')">
+                    内层
+                </div>
+            </div>
+            <!--v-on:click.self点击当前元素才触发，亦可以避免冒泡现象发生-->
+            <div class="demo1" v-on:click.self="showInfo">
+                <button v-on:click.stop="showInfo">再点我你试试</button> 
+            </div>
+
+            <!--v-on:click.passive=立即执行默认事件，不受执行参数影响，如wheel滚轮事件-->
         </div>
     </body>
     <script>
@@ -17,6 +52,9 @@
         methods:{
             showInfo(){
                 alert("算你牛X")
+            },
+            showMsg(event){
+                console.log(event)
             }
         }
       })
