@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>键盘事件</title>
+        <script type="text/javascript" src="js/vue.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            键盘事件-回车：<input type="text" placeholder="请输入你的幸运数字" v-on:keyup.enter="keyInfo">
+        </div>
+    </body>
+    <script>
+        <!--自定义按键-->
+        Vue.config.keyCodes.manual=13
+        
+        new Vue({
+            el:"#root",
+            methods:{
+                keyInfo(e){
+                    console.log("回车事件")
+                }
+            }
+        })
+    </script>
+</html>
