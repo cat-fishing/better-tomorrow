@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>计算属性</title>
+        <script type="text/javascript" src="js/vue.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            姓：<input type="text" v-model:value=firstname> <br/>
+            名：<input type="text" v-model:value=lastname> <br/>       
+            姓名：<span>{{fullname}}</span>   
+        </div>
+    </body>
+    <script>
+        new Vue({
+            el: "#root",
+            data:{
+                firstname: '王',
+                lastname: '五'
+            },
+            computed:{
+                //仅获取结果时可简写fullname(){}
+                fullname:{
+                    //初次调用fullname或者所依赖数据发生改变时候才会调用get方法
+                    get(){
+                        return this.firstname + this.lastname
+                    }
+                }
+            }
+        })
+    </script>
+</html>

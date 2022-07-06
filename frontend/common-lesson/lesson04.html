@@ -6,19 +6,21 @@
         <script type="text/javascript" src="js/vue.js"></script>
     </head>
     <body>
+        <!--系统修饰键ctrl、alt、shift、meta-->
+        <!--v-on:keyup.ctrl.x组合按键-->
         <div id="root">
             键盘事件-回车：<input type="text" placeholder="请输入你的幸运数字" v-on:keyup.enter="keyInfo">
         </div>
     </body>
     <script>
-        <!--自定义按键-->
+        //自定义按键
         Vue.config.keyCodes.manual=13
-        
+
         new Vue({
             el:"#root",
             methods:{
                 keyInfo(e){
-                    console.log("回车事件")
+                    console.log("回车事件",e.keyCode,e.key)
                 }
             }
         })
