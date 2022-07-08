@@ -7,8 +7,12 @@
     </head>
     <body>
        <div id="root">
-            <span>今天天气阳光明媚转{{weather}}</span><br/>
+            监听属性：<span>今天天气阳光明媚转{{weather}}</span><br/>
             <button v-on:click="change">切换天气</button>
+            <hr/>
+            <!--默认不监听对象内部属性变化-->
+            深度监听：<span>我变了-我没变>>{{numbers.a}}</span><br/>
+            <button v-on:click="numbers.a ++ ">动动你的金手指</button>
        </div>
     </body>
     <script>
@@ -16,17 +20,27 @@
             el: "#root",
             data: {
                 isHot: true,
-                weather: '热坏宝宝了'
+                weather: '热坏宝宝了',
+                numbers: {
+                    a: 1
+                }
             },
             methods: {
                 change(){
                     this.isHot = !this.isHot
                 }
             },
+            //如果监视属性中只有handler可简写isHot(){……}
             watch: {
                 isHot: {
                     handler(){
                         this.weather = this.isHot?'热坏宝宝了':'冻死宝宝了'
+                    }
+                },
+                numbers: {
+                    deep: true,
+                    handler(){
+                        console.log('我还是变了',this.numbers.a)
                     }
                 }
             }
