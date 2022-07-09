@@ -44,6 +44,15 @@
                     }
                 }
             }
+            <!--computed和watch之间区别：
+                1.computed能完成的watch也可以完成
+                2.watch能完成的computed不一定能完成，比如异步任务-setTimeOut
+                    1. 被Vue管理的函数最好写成普通函数，这样this指向才是vm或组件实例对象
+                    2. 不被Vue管理的函数（定时器回调函数、ajax回调函数、Promise的回调函数），
+                        最好写成箭头函数，这样this的指向才是vm或组件实例对象
+                        1. 箭头函数中的this指向是固定不变的，即是在定义函数时的指向；
+                        2. 而普通函数中的this指向时变化的，即是在使用函数时的指向。
+            -->
         })
     </script>
 </html>
