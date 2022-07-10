@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>条件渲染</title>
+        <script type="text/javascript" src="js/vue.js"></script>
+    </head>
+    <body>
+       <div id="root">
+            <!--display:none方式看不到实际节点还在-->
+            <div v-show="1===2">你看不见我，略略略</div>
+            <!--节点真正消失-->
+            <div v-if="1===2">你真的看不见我，略略略</div>
+
+            <!--
+                v-if适用于dom节点切换频率较低场景，因为节点真正消失，
+                每次都是新创建消耗性能。v-if、v-else-if、v-else
+                v-show切换频率高的场景，因为节点只是不可见而已。
+                v-if可以结合template模板使用，v-show则不可以
+            -->
+       </div>
+    </body>
+    <script>
+        new Vue({
+            el: '#root',
+        })
+    </script>
+</html>
