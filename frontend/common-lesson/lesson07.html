@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>class样式绑定</title>
+        <script type="text/javascript" src="js/vue.js"></script>
+        <style>
+            .border{
+                border: 2px solid black;
+            }
+            .color{
+                color: green;
+            }
+        </style>
+    </head>
+    <body>
+       <div id="root">
+            <span v-bind:class="sty">日常裂开了</span><br/><br/>
+            <span v-bind:class="sty2">我裂开了</span><br/>
+            <button type="text" v-on:click="changeStyle">点我试试</button>
+       </div>
+    </body>
+    <script>
+        new Vue({
+            el: '#root',
+            data: {
+                attr: {
+                    border: true,
+                    color: false
+                },
+                sty: ['border','color'],
+                sty2: 'border'
+            },
+            methods:{
+                changeStyle(){
+                    this.sty2 = this.sty[Math.floor(Math.random()*2)]
+                }
+            }   
+        })
+    </script>
+</html>
