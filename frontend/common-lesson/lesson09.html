@@ -6,6 +6,8 @@
         <script type="text/javascript" src="js/vue.js"></script>
     </head>
     <body>
+        <!--可以遍历集合、对象、字符串、数字-->
+        <!--key强制使用数据唯一标识，避免默认数据下标导致出现不必要问题-->
        <div id="root">
             <ul>
                 <li v-for="(person, index) in persons" v-bind:key="index">{{person.name}}--{{person.age}}--{{index}}</li>

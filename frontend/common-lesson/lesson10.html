@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>列表过滤</title>
+        <script type="text/javascript" src="js/vue.js"></script>
+    </head>
+    <body>
+       <div id="root">
+            <input type="text" placeholder="模糊查询条件" v-model:value="criteria">
+            <ul>
+                <li v-for="(person, index) in filterPersons" v-bind:key="index">{{person.name}}--{{person.age}}</li>
+            </ul>
+       </div>
+    </body>
+    <script>
+        new Vue({
+            el: '#root',
+            data: {
+                persons: [
+                    {name:'周杰',age: 22},
+                    {name:'林俊杰',age: 18},
+                    {name:'林志炫',age: 26},
+                    {name:'金炫雅',age: 38}
+                ],
+                criteria: ''
+            },
+            computed: {
+                filterPersons(){
+                    return this.persons.filter(p=>{
+                        return p.name.indexOf(this.criteria)!=-1
+                    })
+                }
+            }
+        })
+    </script>
+</html>
