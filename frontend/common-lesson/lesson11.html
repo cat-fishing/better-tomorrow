@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>列表排序</title>
+        <script type="text/javascript" src="js/vue.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            <input type="text" placeholder="模糊查询搜索条件" v-model:value="searchValue">
+            <button v-on:click="orderType = 0">默认顺序</button>
+            <button v-on:click="orderType = 1">降序</button>
+            <button v-on:click="orderType = 2">升序</button>
+            <button v-on:click="searchValue = ''">重置</button>
+            <div>
+                <li v-for="person,index in filterPersons" v-bind:key="index">{{person.name}}--{{person.age}}</li>
+            </div>
+        </div>
+    </body>
+    <script>
+        new Vue({
+            el: "#root",
+            data: {
+                searchValue: "",
+                persons: [
+                    {name: '王尼玛', age: 35},
+                    {name: '王宝强', age: 46},
+                    {name: '宝可梦', age: 18}
+                ],
+                orderType: 0
+            },
+            computed:{
+                filterPersons(){
+                    const arr = this.persons.filter(p=>{
+                        return p.name.indexOf(this.searchValue)!=-1
+                    })
+                    if(this.orderType){
+                        arr.sort((a,b)=>{
+                        return this.orderType == 1 ? b.age-a.age : a.age-b.age
+                        })
+                    }
+                    return arr
+                }
+            }
+        })
+    </script>
+</html>
