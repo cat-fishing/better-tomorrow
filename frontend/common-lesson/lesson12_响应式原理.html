@@ -20,10 +20,56 @@
             4.注意Vue.set()和vm.$set()不能给vm或vm根数据对象添加属性
         -->
         <div id="root">
-            
+            <h1>学生信息</h1>
+            <button v-on:click="student.age ++">年龄加一岁</button><br/>
+            <button v-on:click="addSex">添加性别属性</button><br/>
+            <button v-on:click="student.sex = '女' ">修改性别</button><br/>
+            <button v-on:click="addFriendAtFirst">首位添加一位朋友</button><br/>
+            <button v-on:click="updateFirstFriendAge">修改第一个朋友年龄</button><br/>
+            <button v-on:click="addHobby">添加一个爱好</button><br/>
+            <button v-on:click="updateHobbys">修改第一个爱好为开车</button>
+
+            <h3>姓名：{{student.name}}</h3>
+            <h3>年龄：{{student.age}}</h3>
+            <h3 v-if="student.sex">性别：{{student.sex}}</h3>
+            <h3 v-for="hobby in student.hobbys">爱好：{{hobby}}</h3>
+
+
+            <hr>
+            <h2>朋友</h2>
+            <h3 v-for="friend in student.friends">{{friend.name}}--{{friend.age}}</h3>
         </div>
     </body>
     <script>
-        
+        const vm = new Vue({
+            el:"#root",
+            data: {
+                student:{
+                    name: "毕姥爷",
+                    age: 16,
+                    hobbys: ["打篮球"],
+                    friends: [
+                        {name: "大明", age: 25}
+                    ]
+                }
+            },
+            methods: {
+                addSex(){
+                    Vue.set(this.student,"sex","男")
+                },
+                addFriendAtFirst(){
+                    this.student.friends.unshift({name: "韩梅梅", age: 18})
+                },
+                updateFirstFriendAge(){
+                    this.student.friends[0].age = 666
+                },
+                addHobby(){
+                    this.student.hobbys.push("打豆豆")
+                },
+                updateHobbys(){
+                    Vue.set(this.student.hobbys,0,"开车")
+                }
+            }
+        })
     </script>
 </html>
