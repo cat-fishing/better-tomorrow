@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>表单收集</title>
+        <script type="text/javascript" src="js/vue.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            <form>
+                <!--去除字符串前后空格-->
+                账号：<input type="text" v-model.trim="name"><br>
+                密码：<input type="text" v-model="pwd"><br>
+                <!--年龄只允许填写数字并且存储为数字格式-->
+                年龄：<input type="number" v-model.number="age"><br>
+                性别：男<input type="radio" name="sex" value="male" v-model="sex">
+                      女<input type="radio" name="sex" value="female" v-model="sex"><br>
+                      <!--复选框存储字段需要数组-->
+                爱好：抽烟<input type="checkbox" name="hobby" value="抽烟" v-model="hobby">
+                      喝酒<input type="checkbox" name="hobby" value="喝酒" v-model="hobby">
+                      烫头<input type="checkbox" name="hobby" value="烫头" v-model="hobby"><br>
+                住址：<select v-model="province">
+                        <option value="beijing">北京</option>
+                        <option value="tianjin">天津</option>
+                        <option value="guangzhou">广州</option>
+                        <option value="shanghai">上海</option>
+                        <option value="shenzhen">深圳</option>
+                      </select><br>
+                      <!--失去焦点触发绑定事件-->
+                详细住址：<textarea v-model.lazy="address"></textarea><br>
+                <input type="radio" v-on:click="protocol=!protocol" v-model="protocol" value="true">阅读并接受协议<a href="">《用户协议》</a><br>
+                <!--提交之后不允许执行默认刷新页面操作-->
+                <button v-on:click.prevent="">提交</button>
+            </form>
+        </div>
+    </body>
+    <script>
+        new Vue({
+            el: "#root",
+            data: {
+                name: '',
+                pwd: '',
+                age: '',
+                sex: '',
+                hobby: [],
+                province: 'beijing',
+                address: '',
+                protocol: true
+            }
+        })
+    </script>
+</html>
