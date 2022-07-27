@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>过滤器</title>
+        <script type="text/javascript" src="js/vue.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            <div>{{str | sliceStr}}</div>
+        </div>
+    </body>
+    <script>
+        new Vue({
+            el: '#root',
+            data: {
+                str: '知识是人类进步的阶梯'
+            },
+            filters: {
+                sliceStr(value){
+                    return value.slice(0,5)
+                }
+            }
+        })
+    </script>
+</html>
