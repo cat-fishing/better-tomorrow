@@ -7,10 +7,14 @@
     </head>
     <body>
         <div id="root">
-            <div>{{str | sliceStr}}</div>
+            <div>{{str | sliceStr | mySlice}}</div>
         </div>
     </body>
     <script>
+        //全局过滤器
+        Vue.filter('mySlice',function(value){
+            return value.slice(0,2)
+        })
         new Vue({
             el: '#root',
             data: {
