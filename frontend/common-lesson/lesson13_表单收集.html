@@ -28,7 +28,7 @@
                       </select><br>
                       <!--失去焦点触发绑定事件-->
                 详细住址：<textarea v-model.lazy="address"></textarea><br>
-                <input type="radio" v-on:click="protocol=!protocol" v-model="protocol" value="true">阅读并接受协议<a href="">《用户协议》</a><br>
+                <input type="radio" v-on:click="protocol=!protocol" v-model="protocol">阅读并接受协议<a href="">《用户协议》</a><br>
                 <!--提交之后不允许执行默认刷新页面操作-->
                 <button v-on:click.prevent="">提交</button>
             </form>
