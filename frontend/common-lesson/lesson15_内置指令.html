@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>内置指令</title>
+        <script type="text/javascript" src="js/vue.js"></script>
+    </head>
+    <body>
+        <div id="root">
+        <!--内置指令v-text向其所在标签中渲染文本-->
+        <!--渲染的文本将覆盖标签中已有文本-->
+        <!--无法解析html-->
+            <div v-text="vtext"></div>
+        <!--内置指令v-html-->
+        <!--容易导致xss攻击,因此不要用在用户提交的内容上-->
+        <!--可以解析html-->
+        <div v-html="vhtml"></div>
+        </div>
+    </body>
+    <script>
+        new Vue({
+            el: '#root',
+            data: {
+                vtext: "我是哈哈嗝",
+                vhtml: "<h2>假装这是一条分割线</h2>"
+            }
+        })
+    </script>
+</html>
