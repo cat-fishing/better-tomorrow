@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>自定义指令_函数式</title>
+        <script type="text/javascript" src="js/vue.js"></script>
+        
+    </head>
+    <body>
+        <!--
+            自定义函数式命令
+            操作dom
+        -->
+        <div id="root">
+            <div>我能打{{num}}个</div>
+            <div v-bigger="num"></div>
+            <button v-on:click="num++">你想打几个?</button>
+        </div>
+    </body>
+    <script>
+        new Vue({
+            el: '#root',
+            data: {
+                num: 1
+            },
+            directives: {
+                bigger(element, binding){
+                    element.innerText = '我要打十个' + binding.value*10 + '个'
+                }
+            }
+        })
+    </script>
+</html>
