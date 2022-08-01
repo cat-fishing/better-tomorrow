@@ -4,17 +4,40 @@
         <meta charset="UTF-8">
         <title>内置指令</title>
         <script type="text/javascript" src="js/vue.js"></script>
+        <style>
+            [v-cloak]{
+                display: none;
+            }
+        </style>
     </head>
     <body>
         <div id="root">
-        <!--内置指令v-text向其所在标签中渲染文本-->
-        <!--渲染的文本将覆盖标签中已有文本-->
-        <!--无法解析html-->
+        <!--内置指令v-text向其所在标签中渲染文本
+            渲染的文本将覆盖标签中已有文本，
+            无法解析html
+        -->
             <div v-text="vtext"></div>
-        <!--内置指令v-html-->
-        <!--容易导致xss攻击,因此不要用在用户提交的内容上-->
-        <!--可以解析html-->
+        <!--内置指令v-html容易导致xss攻击,
+            因此不要用在用户提交的内容上，
+            可以解析html
+        -->
         <div v-html="vhtml"></div>
+        <!--v-cloak属性-->
+        <!--解决vue.js文件加载慢的问题，
+            当vue初始化之后去除v-cloak属性，
+            实现页面属性的正常显示
+        -->
+        <div v-cloak>{{vtext}}</div>
+        <!--
+            v-once所在节点初始渲染之后将被视为静态资源，之后不再被渲染
+        -->
+        <h2 v-once>我不变了{{num}}</h2>
+        <h2>我不变了{{num}}</h2>
+        <button v-on:click="num++">点下试试</button>
+        <!--
+            v-pre所在标签无需编译直接显示，可以用于优化性能
+        -->
+        <h2 v-pre>{{vpre}}</h2>
         </div>
     </body>
     <script>
@@ -22,7 +45,9 @@
             el: '#root',
             data: {
                 vtext: "我是哈哈嗝",
-                vhtml: "<h2>假装这是一条分割线</h2>"
+                vhtml: "<h2>假装这是一条分割线</h2>",
+                num: 1,
+                vpre: '看不着我'
             }
         })
     </script>
