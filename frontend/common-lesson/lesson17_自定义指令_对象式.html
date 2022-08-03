@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>自定义指令_对象式</title>
+        <script type="text/javascript" src="js/vue.js"></script>
+        
+    </head>
+    <body>
+        <div id="root">
+            <!--自定义函数式指令-->
+            <!--自定义v-bind指令，并且默认获取input焦点-->
+            <button v-on:click="n++">n++</button>
+            <input v-fbind="n">
+        </div>
+    </body>
+    <script>
+        new Vue({
+            el: '#root',
+            data: {
+                n: 1
+            },
+            directives:{
+                fbind:{
+                    //指令与元素绑定时触发
+                    bind(element, binding){
+                        element.value = binding.value
+                    },
+                    //元素被渲染到页面上
+                    inserted(element, binding){
+                        element.focus()
+                    },
+                    //指令所在模板被重新渲染时候
+                    update(element, binding){
+                        element.value = binding.value
+                        element.focus()
+                    }
+                }
+            }
+        })
+    </script>
+</html>
