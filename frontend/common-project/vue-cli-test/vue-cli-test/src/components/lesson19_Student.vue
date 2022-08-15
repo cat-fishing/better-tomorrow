@@ -13,6 +13,17 @@
                 name: '韩梅梅',
                 age: 16
             }
+        },
+        //强验证接收参数
+        props: {
+            name: {
+                type: String,
+                require: true
+            },
+            age: {
+                type: Number,
+                require: true
+            }
         }
     }
 
