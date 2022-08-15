@@ -1,4 +1,4 @@
-//混合-即公共代码的抽离
+//混入-即公共代码的抽离
 export const showDom = {
   methods:{
     showDom(){

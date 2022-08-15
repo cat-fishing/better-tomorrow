@@ -1,6 +1,6 @@
 <template>
     <div>
-        <School name="十五中" address="南荒"></School>
+        <School name="十五中学" address="南荒"></School>
         <hr/>
         <Student ref="sch" name="大明" :age="15"></Student>
         <button ref="btn" v-on:click="showDom">你赶点我试试</button>
@@ -8,10 +8,11 @@
 </template>
 
 <script>
+    import Vue from 'vue'
     import School from './components/lesson19_School'
     import Student from './components/lesson19_Student'
     import {showDom} from './mixin'
-
+    
     export default {
         name: 'App',
         components:{

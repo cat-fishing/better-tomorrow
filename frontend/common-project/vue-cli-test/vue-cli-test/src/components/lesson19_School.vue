@@ -2,6 +2,7 @@
     <div>
         <h2>学校名称：{{name}}</h2>
         <h2>学校地址：{{address}}</h2>
+        <h2>字符串截取插件：{{str | mySlice}}</h2>
     </div>
 </template>
 
@@ -10,6 +11,7 @@
         name: 'School',
         data(){
             return {
+                str: "王尼玛到此一游"
                 //name: '三十七中',
                 //address: '人民广场'
             }
