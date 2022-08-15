@@ -10,8 +10,8 @@
         name: 'School',
         data(){
             return {
-                name: '三十七中',
-                address: '人民广场'
+                //name: '三十七中',
+                //address: '人民广场'
             }
         },
         //一般接收参数

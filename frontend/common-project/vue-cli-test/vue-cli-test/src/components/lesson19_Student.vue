@@ -10,8 +10,8 @@
         name: 'Student',
         data(){
             return {
-                name: '韩梅梅',
-                age: 16
+                //name: '韩梅梅',
+                //age: 16
             }
         },
         //强验证接收参数

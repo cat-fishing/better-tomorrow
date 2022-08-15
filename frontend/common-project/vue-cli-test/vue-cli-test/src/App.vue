@@ -3,13 +3,14 @@
         <School name="十五中" address="南荒"></School>
         <hr/>
         <Student ref="sch" name="大明" :age="15"></Student>
-        <button ref="btn" v-on:click="showDom">点下试试</button>
+        <button ref="btn" v-on:click="showDom">你赶点我试试</button>
     </div>
 </template>
 
 <script>
     import School from './components/lesson19_School'
     import Student from './components/lesson19_Student'
+    import {showDom} from './mixin'
 
     export default {
         name: 'App',
@@ -23,7 +24,8 @@
                 //refs获取School组件实例对象
                 console.log(this.$refs.sch)
             }
-        }
+        },
+        mixins: [showDom]
     }
 
 </script>
