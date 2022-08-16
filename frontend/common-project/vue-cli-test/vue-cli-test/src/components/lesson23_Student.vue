@@ -14,6 +14,18 @@
                 //age: 16
             }
         },
+        mounted(){
+            this.$bus.$on('homework',this.doHomeWork)
+        },
+        beforeDestroy(){
+            //关闭组件时候删除自定义事件
+            this.$bus.$off('homework')
+        },
+        methods:{
+            doHomeWork(){
+                console.log('到点回家写作业啦！')
+            }
+        },
         //强验证接收参数
         props: {
             name: {
