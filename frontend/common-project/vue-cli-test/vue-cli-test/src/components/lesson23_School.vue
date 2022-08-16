@@ -10,6 +10,8 @@
 </template>
 
 <script>
+    import pubsub from 'pubsub-js'
+
     export default {
         name: 'School',
         data(){
@@ -26,7 +28,8 @@
                 this.$off('lesson24')
           },
           callHome(){
-            this.$bus.$emit('homework')
+            this.$bus.$emit('homework'),
+            pubsub.publish('homework','溜不溜')
           }
         },
         //一般接收参数

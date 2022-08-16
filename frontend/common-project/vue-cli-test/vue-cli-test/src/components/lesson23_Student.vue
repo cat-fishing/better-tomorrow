@@ -6,6 +6,8 @@
 </template>
 
 <script>
+    import pubsub from 'pubsub-js'
+
     export default {
         name: 'Student',
         data(){
@@ -15,11 +17,17 @@
             }
         },
         mounted(){
-            this.$bus.$on('homework',this.doHomeWork)
+            //方法一：消息总线实现全局组件消息互通
+            this.$bus.$on('homework',this.doHomeWork),
+            //方法二：消息订阅发布实现全局消息互通
+            this.pubId = pubsub.subscribe('homework',function(msgName,data){
+                console.log("消息订阅收到：",msgName,data)
+            })
         },
         beforeDestroy(){
             //关闭组件时候删除自定义事件
-            this.$bus.$off('homework')
+            this.$bus.$off('homework'),
+            pubsub.unsubscribe(this.pubId)
         },
         methods:{
             doHomeWork(){
