@@ -9,8 +9,8 @@
 
 <script>
     import Vue from 'vue'
-    import School from './components/lesson19_School'
-    import Student from './components/lesson19_Student'
+    import School from './components/lesson23_School'
+    import Student from './components/lesson23_Student'
     import {showDom} from './mixin'
     
     export default {
