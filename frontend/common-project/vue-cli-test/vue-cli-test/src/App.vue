@@ -1,9 +1,10 @@
 <template>
     <div>
-        <School name="十五中学" address="南荒"></School>
+        <!--自定义事件也可以使用on、once等修饰-->
+        <School name="十五中学" address="南荒" v-on:lesson24.once="addEvent"></School>
         <hr/>
         <Student ref="sch" name="大明" :age="15"></Student>
-        <button ref="btn" v-on:click="showDom">你赶点我试试</button>
+        通过ref属性查看dom结构：<button ref="btn" v-on:click="showDom">你敢点我试试</button>
     </div>
 </template>
 
@@ -19,12 +20,16 @@
             School,Student
         },
         methods:{
-            showDom(){
-                //refs获取真实dom元素
-                console.log(this.$refs.btn)
-                //refs获取School组件实例对象
-                console.log(this.$refs.sch)
-            }
+          //父组件方法
+          addEvent(name){
+            console.log('你瞅啥',name)
+          },
+          showDom(){
+              //refs获取真实dom元素
+              console.log(this.$refs.btn)
+              //refs获取School组件实例对象
+              console.log(this.$refs.sch)
+          }
         },
         mixins: [showDom]
     }
