@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>浏览器本地存储</title>
+    </head>
+    <body>
+      <!--localStorage和sessionStorage的api相同-->
+       <div>
+          保存localStorage：
+          <button onclick="addMsg()">点我存零花钱</button>
+       </div>
+    </body>
+    <script>
+      function addMsg(){
+        var person = {
+          name: '韩梅梅',
+           age: 22
+        }
+        //存储一般数据
+        localStorage.setItem('msg','零钱加一分')
+        //存储对象
+        localStorage.setItem('person',JSON.stringify(person))
+      }
+    </script>
+</html>
