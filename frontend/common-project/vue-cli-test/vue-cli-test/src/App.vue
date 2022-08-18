@@ -5,6 +5,9 @@
         <hr/>
         <Student ref="sch" name="大明" :age="15"></Student>
         通过ref属性查看dom结构：<button ref="btn" v-on:click="showDom">你敢点我试试</button>
+        <hr/>
+        NextTick实现对动态渲染之后dom操作：
+        <NextTick></NextTick>
     </div>
 </template>
 
@@ -12,12 +15,13 @@
     import Vue from 'vue'
     import School from './components/lesson23_School'
     import Student from './components/lesson23_Student'
+    import NextTick from './components/lesson25_nextTick'
     import {showDom} from './mixin'
     
     export default {
         name: 'App',
         components:{
-            School,Student
+            School,Student,NextTick
         },
         methods:{
           //父组件方法
