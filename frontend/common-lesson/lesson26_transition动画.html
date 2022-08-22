@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>transition动画</title>
+        <script type="text/javascript" src="js/vue.js"></script>
+    </head>
+    <body>
+      <div id="root">
+        <button v-on:click="isShow=!isShow">显示/隐藏</button>
+        <transition name="catfishing" appear>
+          <h2 v-show="isShow">我来啦！当当当当！！！！</h2>
+        </transition>
+      </div>
+    </body>
+    <script>
+      new Vue({
+        el: '#root',
+        data:{
+            isShow: true
+        }
+      })
+    </script>
+
+    <style scoped>
+        h2{
+            background-color: aqua;
+        }
+
+        .catfishing-enter-active{
+            animation: catfishing 0.5s linear;
+        }
+
+        .catfishing-leave-active{
+            animation: catfishing 0.5s linear reverse;
+        }
+
+        @keyframes catfishing{
+            from{
+                transform: translateX(-100%);
+            }
+            to{
+                transform: translateX(0);
+            }
+        }
+    </style>
+</html>
