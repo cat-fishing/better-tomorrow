@@ -28,8 +28,16 @@ const state = {
     sum:0
 }
 
+//对state的进一步处理，类似于computed
+const getters = {
+    computedSum(state){
+        return state.sum*10
+    }
+}
+
 export default new Vuex.Store({
     actions,
     mutations,
     state,
+    getters
 })
