@@ -16,9 +16,9 @@
             </template>
         </St>
         <hr/>
-        <Vc1>
-            
-        </Vc1>
+        <Vc1></Vc1>
+        <hr/>
+        <Vc2></Vc2>
     </div>
 </template>
 
@@ -28,12 +28,13 @@
     import NextTick from './components/lesson25_nextTick'
     import St from './components/lesson27_slot'
     import Vc1 from './components/lesson28_vc1'
+    import Vc2 from './components/lesson28_vc2'
     import {showDom} from './mixin'
     
     export default {
         name: 'App',
         components:{
-            School,Student,NextTick,St,Vc1
+            School,Student,NextTick,St,Vc1,Vc2
         },
         methods:{
           //父组件方法
