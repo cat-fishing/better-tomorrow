@@ -11,25 +11,29 @@
         <hr/>
         <St>
             <!-- <h2 slot="slot1">具名插槽1</h2> -->
-            <template scope="msg">
+            <template slot-scope="msg">
                 <h2>作用域插槽：{{msg.msg}}</h2>
             </template>
         </St>
+        <hr/>
+        <Vc1>
+            
+        </Vc1>
     </div>
 </template>
 
 <script>
-    import Vue from 'vue'
     import School from './components/lesson23_School'
     import Student from './components/lesson23_Student'
     import NextTick from './components/lesson25_nextTick'
     import St from './components/lesson27_slot'
+    import Vc1 from './components/lesson28_vc1'
     import {showDom} from './mixin'
     
     export default {
         name: 'App',
         components:{
-            School,Student,NextTick,St
+            School,Student,NextTick,St,Vc1
         },
         methods:{
           //父组件方法
