@@ -9,7 +9,7 @@ import {mapState} from 'vuex'
 export default {
     name: 'Vc2',
     computed:{
-        ...mapState({sum:'sum'})
+        ...mapState('vc1Options',{sum:'sum'})
     }
 }
 </script>
