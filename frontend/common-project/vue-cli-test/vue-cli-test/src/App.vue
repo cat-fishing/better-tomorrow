@@ -19,6 +19,13 @@
         <Vc1></Vc1>
         <hr/>
         <Vc2></Vc2>
+        <hr/>
+        <!--引用路由跳转页面-->
+        <router-link to="/home">Home</router-link>
+        <div>
+            <!--由此标签路由指向页面才可以跳转-->
+            <router-view></router-view>
+        </div>
     </div>
 </template>
 
