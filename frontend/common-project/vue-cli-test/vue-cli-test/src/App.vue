@@ -56,6 +56,13 @@
             路由组件接参：$route.params.id
         -->
 
+        <!--
+            路由开启replace模式，将覆盖当前浏览器访问记录，
+            实现清楚history记录作用
+            <router-link replace></router-link>
+        -->
+        
+
         <div>
             <!--由此标签路由指向页面才可以跳转-->
             <router-view></router-view>
