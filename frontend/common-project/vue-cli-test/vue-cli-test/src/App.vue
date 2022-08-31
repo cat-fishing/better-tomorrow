@@ -22,6 +22,40 @@
         <hr/>
         <!--引用路由跳转页面-->
         <router-link to="/home">Home</router-link>
+        <!--
+            路由跳转query携带参数，对象写法
+            <router-link 
+            :to="{
+                path:'/Home/banner',
+                query:{
+                    a:'',
+                    b:''
+                }
+            }">
+            </router-link>
+            路由组件接参：$route.query.a
+        -->
+
+        <!--
+            路由跳转params携带参数，对象写法;
+            注意：此处不允许通过路由name跳转
+            <router-link 
+            :to="{
+                path:'/home',
+                params:{
+                    id:''
+                }
+            }">
+            </router-link>
+            路由组件接参：$route.params.id
+        -->
+
+        <!--
+            路由跳转params携带参数，普通写法;
+            <router-link :to="/home/777"></router-link>
+            路由组件接参：$route.params.id
+        -->
+
         <div>
             <!--由此标签路由指向页面才可以跳转-->
             <router-view></router-view>
