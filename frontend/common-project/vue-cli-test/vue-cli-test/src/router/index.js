@@ -1,7 +1,7 @@
 import VueRouter from 'vue-router'
 import Home from '../components/lesson29_route'
 
-export default new VueRouter({
+const router = new VueRouter({
     routes:[
         {
             //路由别名name可以让调用方通过对象写法，
@@ -9,6 +9,14 @@ export default new VueRouter({
             name:'home',
             path:'/home',
             component:Home,
+            //独享路由守卫
+            // beforeEnter:(to,from,next)=>{
+            //                 if(to.meta.isAuth){
+            //                      next()
+            //                 }
+            //             },
+            //在路由元数据中添加自定义参数
+            meta:{isAuth:false}
             //路由组件通过参数key直接获取传参，针对params传参
             //props:true
 
@@ -43,3 +51,18 @@ export default new VueRouter({
         }
     ]
 })
+
+//前置路由守卫，初始化时候调用、每次路由切换之前调用
+//可以做权限校验等操作
+// router.beforeEach((to,from,next)=>{
+//     if(to.meta.isAuth){
+        
+//     }
+// })
+
+//后置路由守卫
+// router.afterEach((to,from)=>{
+//     document.title = to.meta.title
+// })
+
+export default router
