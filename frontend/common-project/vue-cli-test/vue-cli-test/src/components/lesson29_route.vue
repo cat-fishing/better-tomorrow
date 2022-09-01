@@ -5,6 +5,13 @@
     </template>
     <script>    
     export default {
-        name: 'Home'
+        name: 'Home',
+        //下面两个生命周期钩子在路由激活或者失活是触发
+        activated(){
+            console.log('路由组件激活时候触发')
+        },
+        deactivated(){
+            console.log('路由组件失活时候触发')
+        }
     }
     </script>

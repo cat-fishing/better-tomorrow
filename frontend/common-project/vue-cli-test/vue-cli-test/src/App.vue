@@ -62,10 +62,32 @@
             <router-link replace></router-link>
         -->
         
+        <!--
+            //编程式路由导航
+            this.$router.push({
+                name: 'home',
+                query: {
+                    id: ''
+                }
+            })
+            //前进
+            this.$router.forward()
+            //后退
+            this.$router.back()
+            //根据数值正负决定进退
+            this.$router.go(2)
+        -->
 
         <div>
-            <!--由此标签路由指向页面才可以跳转-->
-            <router-view></router-view>
+            <!--
+                由此标签路由指向页面才可以跳转
+                keep-alive标签可以缓存路由中数据，
+                include根据组件名缓存指定组件的数据，
+                如果要缓存多个以数组形式展示。
+            -->
+            <keep-alive include="Home">
+                <router-view></router-view>
+            </keep-alive>
         </div>
     </div>
 </template>
